@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()  # take environment variables from .env.
 
-training_text_file = 'langdata/eng.training_text'
+training_text_file = 'langdata/vie.training_text'
 
 lines = []
 
@@ -14,14 +14,14 @@ with open(training_text_file, 'r', encoding='utf-8') as input_file:
     for line in input_file.readlines():
         lines.append(line.strip())
 
-output_directory = 'tesstrain/data/test-ground-truth'
+output_directory = 'tesstrain/data/vietnamese-ground-truth'
 
 if not os.path.exists(output_directory):
     os.mkdir(output_directory)
 
 random.shuffle(lines)
 
-count = 100
+count = 1000
 
 lines = lines[:count]
 
@@ -32,7 +32,7 @@ for line in lines:
     with open(line_training_text, 'w') as output_file:
         output_file.writelines([line])
 
-    file_base_name = f'eng_{line_count}'
+    file_base_name = f'vie_{line_count}'
 
     subprocess.run([
         'text2image',
@@ -47,7 +47,7 @@ for line in lines:
         '--ysize=480',
         '--char_spacing=1.0',
         '--exposure=0',
-        '--unicharset_file=langdata/eng.unicharset'
+        '--unicharset_file=langdata/vie.unicharset'
     ])
 
     line_count += 1
