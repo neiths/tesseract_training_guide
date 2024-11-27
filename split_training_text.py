@@ -2,6 +2,9 @@ import os
 import random
 import pathlib
 import subprocess
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
 
 training_text_file = 'langdata/eng.training_text'
 
@@ -33,7 +36,8 @@ for line in lines:
 
     subprocess.run([
         'text2image',
-        '--font=Arial',
+        f'--fonts_dir={os.getenv('FONTS_DIR')}', # path to the font directory
+        '--font=ARIAL',
         f'--text={line_training_text}',
         f'--outputbase={output_directory}/{file_base_name}',
         '--max_pages=1',
