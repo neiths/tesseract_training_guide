@@ -2,3 +2,4 @@ venv
 .env
 tessdata_best
 tesstrain/data/*
+.venv
