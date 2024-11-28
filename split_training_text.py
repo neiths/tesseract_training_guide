@@ -10,11 +10,11 @@ training_text_file = 'langdata/vie.training_text'
 
 lines = []
 
-with open(training_text_file, 'r', encoding='utf-8') as input_file:
+with open(training_text_file, 'r') as input_file:
     for line in input_file.readlines():
         lines.append(line.strip())
 
-output_directory = 'tesstrain/data/vietnamese-ground-truth'
+output_directory = 'tesstrain/data/vietnamese-ocr-model-ground-truth'
 
 if not os.path.exists(output_directory):
     os.mkdir(output_directory)
